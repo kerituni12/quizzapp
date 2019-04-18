@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "678348235609",
+    "firebase_url": "https://login-facebook-a3221.firebaseio.com",
+    "project_id": "login-facebook-a3221",
+    "storage_bucket": "login-facebook-a3221.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:678348235609:android:53299fb21b7e0c3f",
+        "android_client_info": {
+          "package_name": "com.navigation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "678348235609-aufbvu6i7oiq2hgj83cgou4k99fg681g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCo42i7rx9CB81ncyz10mdI4RLtmbk99FE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
