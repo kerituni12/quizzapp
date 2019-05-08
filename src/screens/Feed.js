@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text,View, Button,StyleSheet,TouchableOpacity,Image } from 'react-native';
-import images from '../../utils/Images';
-import QuizScreen from '../../components/QuizScreen';
+import images from '../utils/Images';
+import QuizScreen from '../components/QuizScreen';
 export default class Feed extends Component {
     
     
@@ -12,7 +12,7 @@ export default class Feed extends Component {
             {key:'chemistry'},
             {key:'biology'},
             {key:'literature'},
-            {key:'language'},
+            {key:'english'},
             
         ]
     }

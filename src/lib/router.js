@@ -8,19 +8,20 @@ import {
   createStackNavigator,
   DrawerItems,SafeAreaView 
 } from 'react-navigation';
-import {TouchableOpacity,View,Text,Alert,Image} from 'react-native'
+
 
 import Feed from '../screens/Feed';
-import Profile from '../screens/Profile';
-import Settings from '../screens/Settings';
+import Settings from '../screens/About';
+import PDF from '../screens/PDF';
+import Flat from '../screens/FLat';
+import Doc from '../screens/Doc';
 import WelcomeScreen,{Detail,Clone} from '../screens/index';
-import QuizScreen,{Results} from '../../components/QuizScreen';
-import HomeScreen,{ DetailsScreen } from '../../components/Quiz';
-import { highlightTrailingWhitespace } from 'jest-matcher-utils';
-import DrawContent from '../../screens/DrawContent';
+import QuizScreen,{Results} from '../components/QuizScreen';
+import HomeScreen,{ DetailsScreen } from '../components/Quiz';
+import DrawContent from '../components/DrawContent';
 //import Results from '../../components/Results';
 
-const Test = createStackNavigator(
+  const Test = createStackNavigator(
     {
       Feed: {
         screen: Feed,
@@ -38,20 +39,19 @@ const Test = createStackNavigator(
       Quiz:{screen:QuizScreen},
       Details:{screen:DetailsScreen}
     },
-    {
-      defaultNavigationOptions: {
-        gesturesEnabled: false,        
-      },
+    // {
+    //   defaultNavigationOptions: {
+    //     // gesturesEnabled: false,        
+    //   },
      
-    }
+    // }
   );
   
   Test.navigationOptions = ({ navigation }) => {
     let tabBarVisible = true;
     if (navigation.state.index > 0) {
       tabBarVisible = false;
-    }
-  
+    }  
     return {
       tabBarVisible,
     };
@@ -59,8 +59,8 @@ const Test = createStackNavigator(
   
 
   const Document = createStackNavigator({
-    Profile: {
-      screen: Profile,
+    Documents: {
+      screen: Doc,
       navigationOptions: ({ navigation }) => {
         return {
           headerTitle: 'Document',
@@ -69,8 +69,11 @@ const Test = createStackNavigator(
           )
         };
       }
-    }
+    },
+    PDF:PDF,
+    Flat:Flat,
   });
+
   const About = createStackNavigator({
     Settings: {
       screen: Settings,
@@ -101,7 +104,7 @@ const Test = createStackNavigator(
         };
       },
       defaultNavigationOptions:({navigation}) =>({
-        tabBarIcon:({tintColor}) =>{
+        tabBarIcon:() =>{
           let {routeName} = navigation.state;
           let iconName;
           if(routeName === 'Exam'){
@@ -132,31 +135,12 @@ const Test = createStackNavigator(
       },
     }
   );
-  const Dashboard = createStackNavigator(
-    {
-      Dashboard: Profile,
-     
-    },
-    {
-      defaultNavigationOptions: ({ navigation }) => {
-        return {
-          headerLeft: (
-            <Icon style={{ paddingLeft: 10 }} onPress={() => navigation.openDrawer()} name="bars" size={30} />
-          )
-        };
-      }
-    }
-  );
+  
   const AppDrawerNavigator = createDrawerNavigator({
     Dashboards: {
       screen: DashboardStackNavigator
     },
-    Detail:{
-      screen:Detail,
-      navigationOptions: {
-          tabBarVisible:false,
-      }      
-    },
+    
    
   }, 
   {

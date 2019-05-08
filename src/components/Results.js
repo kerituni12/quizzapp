@@ -23,7 +23,7 @@ export default class Results extends React.Component{
 
     _onClick = () => {
       Share.share({
-        message: 'Vào thi cùng tôi nào !!!',
+        message: 'Play with me now !!!',
         url: 'http://www.facebook.com',
         title: 'Wow, did you see that?'
       }, {

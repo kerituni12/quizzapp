@@ -2,18 +2,21 @@ import React, { Component } from "react";
 import { 
     View,
     Text,
-    StyleSheet,AsyncStorage,
+    StyleSheet,
     Image,
     TouchableOpacity,
-    Alert
+    Alert,
+    Linking
 } from "react-native";
+import images from '../utils/Images';
 import {DrawerItems,SafeAreaView } from 'react-navigation'
 import { LoginManager } from 'react-native-fbsdk';
+import AsyncStorage from '@react-native-community/async-storage';
 
 class componentName extends Component {
   state ={
-    name :'',
-    avatar: null
+    name :'Guest',
+    avatar: 'https://dashboardserver.syncfusion.com:444/en-us/User/Avatar?Username=2&ImageSize=110'
   }
   _retrieveData = async () => {
     try {
@@ -41,6 +44,11 @@ class componentName extends Component {
               </View>
                         
             <DrawerItems {...this.props} />
+            <TouchableOpacity
+              onPress={()=>Linking.openURL('https://tuhocplus.com')}
+            >
+              <Text style={{margin: 16,fontWeight: 'bold',}}>Policy</Text>
+            </TouchableOpacity>
             <TouchableOpacity onPress={()=>{
               Alert.alert(
                 'Log out',

@@ -20,7 +20,7 @@ export default class QuizScreen extends React.Component {
       chemistry: 'https://opentdb.com/api.php?amount=15&category=27&difficulty=medium&type=multiple',
       biology: 'https://opentdb.com/api.php?amount=30&category=23&difficulty=medium&type=multiple',
       literature: 'https://opentdb.com/api.php?amount=30&category=14&difficulty=medium&type=multiple',
-      language: 'https://opentdb.com/api.php?amount=30&category=22&difficulty=medium&type=multiple',
+      english: 'https://opentdb.com/api.php?amount=30&category=22&difficulty=medium&type=multiple',
       music: 'https://opentdb.com/api.php?amount=30&category=12&difficulty=medium&type=multiple',
       art: 'https://opentdb.com/api.php?amount=30&category=22&difficulty=medium&type=multiple',
       mythology: 'https://opentdb.com/api.php?amount=10&category=20&difficulty=medium&type=multiple'
@@ -31,7 +31,7 @@ export default class QuizScreen extends React.Component {
       chemistry: '#8CC152',
       biology: '#FBC02D',
       literature: '#FBC02D',
-      language: '#FBC02D',
+      english: '#FBC02D',
       music: '#FBC02D',
       art: '#FBC02D',
       mythology: '#FBC02D'
@@ -149,17 +149,17 @@ export default class QuizScreen extends React.Component {
                     {this.state.counter + 1 + " / " + this.state.quiz.length}
                   </Text>
                 </View>
-                <View style={{flex: 1}}>
+                {/* <View style={{flex: 1}}>
                   {
                     this.state.showNext ? (
                       <TouchableOpacity  
                         onPress={() => { this.incremenetCounter() }}>
-                            <Icon name="check" size={48} color="#FFFDE7" />
+                            <Icon name="next" size={48} color="#FFFDE7" />
                       </TouchableOpacity>
                     ) : 
                     null
                   }
-                </View>
+                </View> */}
               </View>
             )
             )

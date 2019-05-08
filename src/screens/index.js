@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View,Text, Button,AsyncStorage } from 'react-native';
+import { View,Text, Button, } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import {AccessToken, LoginManager } from 'react-native-fbsdk';
 import firebase from 'react-native-firebase';
 export default class WelcomeScreen extends Component {
@@ -7,24 +8,12 @@ export default class WelcomeScreen extends Component {
   state = {    
     logout : true,
   }
-  
-  // check = () => {
-  //   console.log('da chay');
-  //   value = AsyncStorage.getItem('@name:key'); 
-
-  //      if (value === null ) {
-  //         console.log(value);        
-  //         return true;
-  //      } 
-  //      return false;            
-        
-  // }
 
   _storeData = async (name,avatar) => {
     try {
       await AsyncStorage.setItem('@name:key', name);
       await AsyncStorage.setItem('@avatar:key', avatar);
-      alert('save ok');
+      // alert('save ok');
     } catch (error) {
       // Error saving data
     }
@@ -72,41 +61,22 @@ export default class WelcomeScreen extends Component {
           console.log(currentUser.user);
           this.state.lan += 1;
 
-        // save to firebase
-        //   firebase.database().ref(`/users/${currentUser.user._user.uid}/profile`).set({
-        //     name: currentUser.user._user.displayName,
-        //     email: currentUser.user._user.email,
-        //     avatar: currentUser.user._user.photoURL
-        // }); 
+        //save to firebase
+          firebase.database().ref(`/users/${currentUser.user._user.uid}/profile`).set({
+            name: currentUser.user._user.displayName,
+            email: currentUser.user._user.email,
+            avatar: currentUser.user._user.photoURL
+        }); 
         
         this._storeData(currentUser.user._user.displayName,currentUser.user._user.photoURL);
             this.setState ({logout : false})     ;
             //console.log(this.state.logged)  ;  
-            this.props.navigation.navigate('Dashboard')  
+            this.props.navigation.navigate('Dashboard')  ;
         })
         .catch((error) => {
             console.log(`Facebook login fail with error: ${error}`);
-        });}   
-        
-        async loginWithFacebook () {
-          try{
-              console.log('outside login manager')
-          LoginManager.logInWithReadPermissions(['public_profile']).then((result) => {
-              console.log(result)
-              if(result.isCancelled) {
-                  console.log('Login cancelado')
-              } else {
-                  console.log(`Login success ${result.grantedPermissions.toString()}`)
-              }
-          })
-          }catch{
-              alert(error);
-          }          
-      }  
+        });} 
 
-  logOut =()=>{
-    LoginManager.logOut();
-  }
 
     render() {
      
@@ -119,7 +89,12 @@ export default class WelcomeScreen extends Component {
                 <Button 
                 title="Login"
                 onPress={()=>this.onLoginFacebook()}/>
-              </View>)
+                <Text style={{margin:20}}></Text>
+                <Button 
+                title="Guest Play"
+                onPress={()=>this.props.navigation.navigate('Dashboard')}/>
+              </View>
+              )
          :  this.props.navigation.navigate('Dashboard')         
         
         }
