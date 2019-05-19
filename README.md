@@ -14,7 +14,5 @@ Library
 -	react-native-fbsdk
 -	react-native-firebase
 -	react-native-gesture-handler
--	react-native-modal
 -	react-native-pdf
--	react-native-scaling-drawer
 -	react-native-vector-icons
